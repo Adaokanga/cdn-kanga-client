@@ -1,0 +1,16 @@
+# Dependências (O Render instala as dele sozinho)
+node_modules/
+
+# Segurança (NUNCA suba este arquivo com suas chaves)
+.env
+env.txt
+
+# Arquivos temporários do sistema
+.DS_Store
+Thumbs.db
+
+# Pasta de uploads temporários do multer
+uploads/
+
+# Logs de erro
+npm-debug.log*

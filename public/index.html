@@ -1,287 +1,504 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CDN KANGA • TERMINAL</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Fira+Code&display=swap');
-        
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background: #0a0c0f; 
-            color: white; 
-            display: flex; 
-            justify-content: center; 
-            padding: 20px; 
-            margin: 0;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CDN KANGA • TERMINAL</title>
 
-        .container { width: 100%; max-width: 900px; margin-top: 40px; }
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Fira+Code&display=swap');
 
-        .menu-grid { 
-            display: grid; 
-            grid-template-columns: 1fr 1fr 1fr; 
-            gap: 20px; 
-            margin-bottom: 30px; 
-        }
+body{
+font-family:'Inter',sans-serif;
+background:#0a0c0f;
+color:white;
+display:flex;
+justify-content:center;
+padding:20px;
+margin:0;
+}
 
-        .menu-card { 
-            background: #1a1d23; 
-            padding: 20px; 
-            border: 1px solid #333; 
-            border-radius: 10px; 
-            cursor: pointer; 
-            text-align: center; 
-            transition: 0.3s; 
-        }
+/* CONTAINER */
 
-        .menu-card:hover, .menu-card.active { 
-            border-color: cyan; 
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3); 
-            transform: translateY(-2px);
-        }
+.container{
+width:100%;
+max-width:900px;
+margin-top:40px;
+}
 
-        .action-panel { 
-            background: #14171c; 
-            padding: 30px; 
-            border-radius: 15px; 
-            border: 1px solid #00ffff55; 
-        }
+/* TITLE */
 
-        .form-group { margin-bottom: 20px; }
-        
-        label { display: block; margin-bottom: 8px; font-size: 0.9rem; color: #ccc; }
+h1{
+text-align:center;
+color:#00ffff;
+text-shadow:0 0 10px #00ffff;
+letter-spacing:2px;
+}
 
-        input, select { 
-            width: 100%; 
-            padding: 12px; 
-            background: #000; 
-            border: 1px solid #333; 
-            color: white; 
-            border-radius: 5px; 
-            font-family: 'Fira Code', monospace; 
-            box-sizing: border-box;
-            transition: 0.3s;
-        }
+/* MENU */
 
-        input:focus, select:focus { border-color: cyan; outline: none; }
+.menu-grid{
+display:grid;
+grid-template-columns:1fr 1fr 1fr;
+gap:20px;
+margin-bottom:30px;
+}
 
-        .btn { 
-            width: 100%; 
-            padding: 15px; 
-            background: cyan; 
-            color: black; 
-            border: none; 
-            border-radius: 5px; 
-            font-weight: bold; 
-            cursor: pointer; 
-            text-transform: uppercase;
-            transition: 0.3s;
-        }
+.menu-card{
+background:#161a20;
+padding:18px;
+border:1px solid #2a2f36;
+border-radius:10px;
+cursor:pointer;
+text-align:center;
+transition:0.25s;
+}
 
-        .btn:hover { background: #00cccc; transform: scale(1.01); }
+.menu-card:hover{
+border-color:#00ffff;
+box-shadow:0 0 12px rgba(0,255,255,0.3);
+transform:translateY(-2px);
+}
 
-        #terminal { 
-            background: #000; 
-            padding: 15px; 
-            border-radius: 5px; 
-            height: 180px; 
-            overflow-y: auto; 
-            font-family: 'Fira Code', monospace; 
-            margin-top: 25px; 
-            font-size: 0.85rem; 
-            border: 1px solid #333; 
-            line-height: 1.5;
-        }
+.menu-card.active{
+border-color:#00ffff;
+box-shadow:0 0 14px rgba(0,255,255,0.5);
+}
 
-        .success { color: #00ff88; } 
-        .error { color: #ff4444; } 
-        .info { color: #00ccff; }
-    </style>
+/* PANEL */
+
+.action-panel{
+background:#11151a;
+padding:30px;
+border-radius:14px;
+border:1px solid rgba(0,255,255,0.25);
+}
+
+/* FORM */
+
+.form-group{
+margin-bottom:20px;
+}
+
+label{
+display:block;
+margin-bottom:6px;
+font-size:0.85rem;
+color:#9ca7b0;
+}
+
+/* INPUTS */
+
+input,select{
+width:100%;
+padding:12px;
+background:#020304;
+border:1px solid #2b3138;
+color:white;
+border-radius:6px;
+font-family:'Fira Code',monospace;
+transition:0.25s;
+}
+
+input:focus,select:focus{
+border-color:#00ffff;
+outline:none;
+box-shadow:0 0 6px rgba(0,255,255,0.4);
+}
+
+/* BUTTON */
+
+.btn{
+width:100%;
+padding:14px;
+background:linear-gradient(90deg,#00ffff,#00c8ff);
+color:black;
+border:none;
+border-radius:8px;
+font-weight:bold;
+cursor:pointer;
+transition:0.25s;
+}
+
+.btn:hover{
+transform:translateY(-1px);
+box-shadow:0 0 12px rgba(0,255,255,0.6);
+}
+
+/* TERMINAL */
+
+#terminal{
+background:#010203;
+padding:15px;
+border-radius:6px;
+height:180px;
+overflow-y:auto;
+font-family:'Fira Code',monospace;
+margin-top:25px;
+font-size:0.85rem;
+border:1px solid #2b3138;
+line-height:1.5;
+}
+
+/* TERMINAL COLORS */
+
+.success{
+color:#00ff88;
+}
+
+.error{
+color:#ff4444;
+}
+
+.info{
+color:#00ccff;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+.menu-grid{
+grid-template-columns:1fr;
+}
+
+.container{
+margin-top:10px;
+}
+
+}
+
+</style>
 </head>
+
 <body>
-    <div class="container">
-        <h1 style="text-align:center; color:cyan; text-shadow: 0 0 10px cyan; letter-spacing: 2px;">CDN KANGA SYSTEM</h1>
-        
-        <div class="menu-grid">
-            <div class="menu-card active" onclick="selectOption(1)"><h3>🛒 COMPRAR</h3></div>
-            <div class="menu-card" onclick="selectOption(2)"><h3>📤 ATIVAR</h3></div>
-            <div class="menu-card" onclick="selectOption(3)"><h3>🔄 RENOVAR</h3></div>
-        </div>
 
-        <div class="action-panel">
-            <h2 id="actionTitle" style="margin-top:0; color:cyan; font-size: 1.2rem;">🛒 COMPRAR TOKEN</h2>
-            
-            <div id="formComprar">
-                <div class="form-group">
-                    <label>Provedor CDN</label>
-                    <select id="buyProvider">
-                        <option value="cachefly">KANGA CDN</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Plano de Assinatura</label>
-                    <select id="buyPlan">
-                        <option value="semanal">Semanal (7 dias)</option>
-                        <option value="bissemanal">Bissemanal (15 dias)</option>
-                        <option value="mensal">Mensal (30 dias)</option>
-                    </select>
-                </div>
-                <button class="btn" onclick="comprarToken()">GERAR LINK DE PAGAMENTO</button>
-            </div>
+<div class="container">
 
-            <div id="formAtivar" style="display:none;">
-                <div class="form-group">
-                    <label>IP da sua VPS (Origem)</label>
-                    <input type="text" id="activateIp" placeholder="Ex: 151.244.x.x">
-                </div>
-                <div class="form-group">
-                    <label>Arquivo PDF (Contendo o Token)</label>
-                    <input type="file" id="activateFile" accept=".pdf">
-                </div>
-                <button class="btn" onclick="ativarCDN()">ATIVAR CDN AGORA</button>
-            </div>
+<h1>CDN KANGA SYSTEM</h1>
 
-            <div id="formRenovar" style="display:none;">
-                <div class="form-group">
-                    <label>Domínio para Renovação</label>
-                    <input type="text" id="renewDomain" placeholder="cdnXXXX.waveplusnet.shop">
-                </div>
-                <button class="btn" onclick="renovarCDN()">SOLICITAR RENOVAÇÃO</button>
-            </div>
-        </div>
+<div class="menu-grid">
 
-        <div id="terminal"></div>
-    </div>
+<div class="menu-card active" onclick="selectOption(1)">
+<h3>🛒 COMPRAR</h3>
+</div>
 
-    <script>
-        const API_BASE_URL = window.location.origin;
+<div class="menu-card" onclick="selectOption(2)">
+<h3>📤 ATIVAR</h3>
+</div>
 
-        function addTerminalMessage(msg, type = 'info') {
-            const t = document.getElementById('terminal');
-            const div = document.createElement('div');
-            div.className = type;
-            div.textContent = `> [${new Date().toLocaleTimeString()}] ${msg}`;
-            t.appendChild(div);
-            t.scrollTop = t.scrollHeight;
-        }
+<div class="menu-card" onclick="selectOption(3)">
+<h3>🔄 RENOVAR</h3>
+</div>
 
-        function selectOption(opt) {
-            document.querySelectorAll('.menu-card').forEach((c, i) => c.classList.toggle('active', i+1 === opt));
-            document.getElementById('formComprar').style.display = opt === 1 ? 'block' : 'none';
-            document.getElementById('formAtivar').style.display = opt === 2 ? 'block' : 'none';
-            document.getElementById('formRenovar').style.display = opt === 3 ? 'block' : 'none';
-            
-            const titles = { 1: '🛒 COMPRAR TOKEN', 2: '📤 ATIVAR CDN', 3: '🔄 RENOVAR SERVIÇO' };
-            document.getElementById('actionTitle').textContent = titles[opt];
-        }
+</div>
 
-        async function comprarToken() {
-            const provider = document.getElementById('buyProvider').value;
-            const plan = document.getElementById('buyPlan').value;
-            
-            addTerminalMessage(`Iniciando reserva de domínio para plano ${plan}...`);
-            
-            try {
-                const res = await fetch(`${API_BASE_URL}/api/comprar`, {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({ provider, plan })
-                });
-                
-                const data = await res.json();
-                
-                if (data.success && data.link) {
-                    addTerminalMessage(`✅ Sucesso! Link de pagamento gerado.`, 'success');
-                    addTerminalMessage(`Redirecionando para o checkout...`, 'info');
-                    
-                    // Pequeno delay para o usuário ler a mensagem antes de sair
-                    setTimeout(() => {
-                        window.location.href = data.link; 
-                    }, 1500);
-                } else {
-                    addTerminalMessage(`❌ Erro: ${data.error || 'Nenhum domínio disponível'}`, 'error');
-                }
-            } catch (e) { 
-                addTerminalMessage(`❌ Erro fatal na comunicação com o backend`, 'error'); 
-            }
-        }
+<div class="action-panel">
 
-        async function ativarCDN() {
-            const ip = document.getElementById('activateIp').value;
-            const file = document.getElementById('activateFile').files[0];
-            
-            if (!ip || !file) {
-                return addTerminalMessage('⚠️ Informe o IP e selecione o PDF do Token!', 'error');
-            }
+<h2 id="actionTitle" style="margin-top:0;color:cyan;font-size:1.2rem;">
+🛒 COMPRAR TOKEN
+</h2>
 
-            const formData = new FormData();
-            formData.append('pdf', file);
-            formData.append('ip', ip);
+<div id="formComprar">
 
-            addTerminalMessage('📤 Analisando PDF e configurando Cloudflare/CDN...');
-            
-            try {
-                const res = await fetch(`${API_BASE_URL}/api/enviar-pdf`, { 
-                    method: 'POST', 
-                    body: formData 
-                });
-                
-                const data = await res.json();
-                
-                if (data.success) {
-                    addTerminalMessage(`🚀 SUCESSO! CDN ATIVA`, 'success');
-                    addTerminalMessage(`Domínio: ${data.domain}`, 'success');
-                    addTerminalMessage(`Aponte sua aplicação para o novo domínio.`, 'info');
-                } else {
-                    addTerminalMessage(`❌ Falha na Ativação: ${data.error}`, 'error');
-                }
-            } catch (e) { 
-                addTerminalMessage(`❌ Erro técnico ao processar PDF`, 'error'); 
-            }
-        }
+<div class="form-group">
+<label>Provedor CDN</label>
 
-        async function renovarCDN() {
-            const dominio = document.getElementById('renewDomain').value;
-            if (!dominio) return addTerminalMessage('⚠️ Digite o domínio completo!', 'error');
+<select id="buyProvider">
+<option value="cachefly">KANGA CDN</option>
+</select>
+</div>
 
-            addTerminalMessage(`Verificando domínio ${dominio} na base de dados...`);
-            
-            try {
-                const res = await fetch(`${API_BASE_URL}/api/renovar`, {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({ dominio })
-                });
-                
-                const data = await res.json();
-                
-                if (data.success) {
-                    addTerminalMessage(`✅ Pedido de renovação registrado com sucesso!`, 'success');
-                    addTerminalMessage(`Aguarde o processamento pelo administrador.`, 'info');
-                } else {
-                    addTerminalMessage(`❌ Erro: ${data.error}`, 'error');
-                }
-            } catch (e) { 
-                addTerminalMessage(`❌ Erro de conexão ao solicitar renovação`, 'error'); 
-            }
-        }
+<div class="form-group">
+<label>Plano de Assinatura</label>
 
-        window.onload = async () => {
-            addTerminalMessage('Conectando ao terminal...', 'info');
-            try {
-                const res = await fetch(`${API_BASE_URL}/api/status`);
-                const data = await res.json();
-                if(data.success) {
-                    addTerminalMessage('✅ Conexão estabelecida. Sistema pronto.', 'success');
-                } else {
-                    addTerminalMessage('⚠️ VPS respondeu com erro. Verifique os logs.', 'error');
-                }
-            } catch (e) { 
-                addTerminalMessage('❌ BACKEND OFFLINE - Verifique a hospedagem no Render/VPS', 'error'); 
-            }
-        };
-    </script>
+<select id="buyPlan">
+<option value="semanal">Semanal (7 dias)</option>
+<option value="bissemanal">Bissemanal (15 dias)</option>
+<option value="mensal">Mensal (30 dias)</option>
+</select>
+</div>
+
+<button class="btn" onclick="comprarToken()">
+GERAR LINK DE PAGAMENTO
+</button>
+
+</div>
+
+<div id="formAtivar" style="display:none;">
+
+<div class="form-group">
+<label>IP da sua VPS (Origem)</label>
+<input type="text" id="activateIp" placeholder="Ex: 151.244.x.x">
+</div>
+
+<div class="form-group">
+<label>Arquivo PDF (Contendo o Token)</label>
+<input type="file" id="activateFile" accept=".pdf">
+</div>
+
+<button class="btn" onclick="ativarCDN()">
+ATIVAR CDN AGORA
+</button>
+
+</div>
+
+<div id="formRenovar" style="display:none;">
+
+<div class="form-group">
+<label>Domínio para Renovação</label>
+<input type="text" id="renewDomain" placeholder="cdnXXXX.waveplusnet.shop">
+</div>
+
+<button class="btn" onclick="renovarCDN()">
+SOLICITAR RENOVAÇÃO
+</button>
+
+</div>
+
+</div>
+
+<div id="terminal"></div>
+
+</div>
+
+<script>
+
+const API_BASE_URL = window.location.origin;
+
+function addTerminalMessage(msg,type='info'){
+
+const t=document.getElementById('terminal');
+
+const div=document.createElement('div');
+
+div.className=type;
+
+div.textContent=`> [${new Date().toLocaleTimeString()}] ${msg}`;
+
+t.appendChild(div);
+
+t.scrollTop=t.scrollHeight;
+
+}
+
+function selectOption(opt){
+
+document.querySelectorAll('.menu-card')
+.forEach((c,i)=>c.classList.toggle('active',i+1===opt));
+
+document.getElementById('formComprar').style.display=
+opt===1?'block':'none';
+
+document.getElementById('formAtivar').style.display=
+opt===2?'block':'none';
+
+document.getElementById('formRenovar').style.display=
+opt===3?'block':'none';
+
+const titles={
+1:'🛒 COMPRAR TOKEN',
+2:'📤 ATIVAR CDN',
+3:'🔄 RENOVAR SERVIÇO'
+};
+
+document.getElementById('actionTitle').textContent=titles[opt];
+
+}
+
+async function comprarToken(){
+
+const provider=document.getElementById('buyProvider').value;
+
+const plan=document.getElementById('buyPlan').value;
+
+addTerminalMessage(`Iniciando reserva de domínio para plano ${plan}...`);
+
+try{
+
+const res=await fetch(`${API_BASE_URL}/api/comprar`,{
+
+method:'POST',
+
+headers:{'Content-Type':'application/json'},
+
+body:JSON.stringify({provider,plan})
+
+});
+
+const data=await res.json();
+
+if(data.success && data.link){
+
+addTerminalMessage(`✅ Sucesso! Link de pagamento gerado.`,'success');
+
+addTerminalMessage(`Redirecionando para o checkout...`,'info');
+
+setTimeout(()=>{
+
+window.location.href=data.link;
+
+},1500);
+
+}
+
+else{
+
+addTerminalMessage(`❌ Erro: ${data.error || 'Nenhum domínio disponível'}`,'error');
+
+}
+
+}
+
+catch(e){
+
+addTerminalMessage(`❌ Erro fatal na comunicação com o backend`,'error');
+
+}
+
+}
+
+async function ativarCDN(){
+
+const ip=document.getElementById('activateIp').value;
+
+const file=document.getElementById('activateFile').files[0];
+
+if(!ip || !file){
+
+return addTerminalMessage('⚠️ Informe o IP e selecione o PDF do Token!','error');
+
+}
+
+const formData=new FormData();
+
+formData.append('pdf',file);
+
+formData.append('ip',ip);
+
+addTerminalMessage('📤 Analisando PDF e configurando Cloudflare/CDN...');
+
+try{
+
+const res=await fetch(`${API_BASE_URL}/api/enviar-pdf`,{
+
+method:'POST',
+
+body:formData
+
+});
+
+const data=await res.json();
+
+if(data.success){
+
+addTerminalMessage(`🚀 SUCESSO! CDN ATIVA`,'success');
+
+addTerminalMessage(`Domínio: ${data.domain}`,'success');
+
+addTerminalMessage(`Aponte sua aplicação para o novo domínio.`,'info');
+
+}
+
+else{
+
+addTerminalMessage(`❌ Falha na Ativação: ${data.error}`,'error');
+
+}
+
+}
+
+catch(e){
+
+addTerminalMessage(`❌ Erro técnico ao processar PDF`,'error');
+
+}
+
+}
+
+async function renovarCDN(){
+
+const dominio=document.getElementById('renewDomain').value;
+
+if(!dominio){
+
+return addTerminalMessage('⚠️ Digite o domínio completo!','error');
+
+}
+
+addTerminalMessage(`Verificando domínio ${dominio} na base de dados...`);
+
+try{
+
+const res=await fetch(`${API_BASE_URL}/api/renovar`,{
+
+method:'POST',
+
+headers:{'Content-Type':'application/json'},
+
+body:JSON.stringify({dominio})
+
+});
+
+const data=await res.json();
+
+if(data.success){
+
+addTerminalMessage(`✅ Pedido de renovação registrado com sucesso!`,'success');
+
+addTerminalMessage(`Aguarde o processamento pelo administrador.`,'info');
+
+}
+
+else{
+
+addTerminalMessage(`❌ Erro: ${data.error}`,'error');
+
+}
+
+}
+
+catch(e){
+
+addTerminalMessage(`❌ Erro de conexão ao solicitar renovação`,'error');
+
+}
+
+}
+
+window.onload=async()=>{
+
+addTerminalMessage('Conectando ao terminal...','info');
+
+try{
+
+const res=await fetch(`${API_BASE_URL}/api/status`);
+
+const data=await res.json();
+
+if(data.success){
+
+addTerminalMessage('✅ Conexão estabelecida. Sistema pronto.','success');
+
+}
+
+else{
+
+addTerminalMessage('⚠️ VPS respondeu com erro. Verifique os logs.','error');
+
+}
+
+}
+
+catch(e){
+
+addTerminalMessage('❌ BACKEND OFFLINE - Verifique a hospedagem no Render/VPS','error');
+
+}
+
+};
+
+</script>
+
 </body>
-</html>
+                                           </html>
